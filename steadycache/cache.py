@@ -21,7 +21,7 @@ def mangle(fname, f, args, kwargs):
     # as resolved by the function definition.
     print(fname, f, args, kwargs)
     print(getcallargs)
-    print(json.dumps(getcallargs(f, *args, **kwargs)))
+    print(json.dumps(sorted(getcallargs(f, *args, **kwargs).items(), key=lambda x: x[0])))
 
     return "@" + fname + "_" + json.dumps(getcallargs(f, *args, **kwargs))
 
